@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>BackIsBag_ing</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 모든 servlet(jsp도 포함해서)이 공유 할 init-param설정하기(ServletContext(=application))  -->
+  <context-param>
+    <param-name>fileName</param-name>
+    <param-value>kosta/listener/ActionMapping</param-value>
+  </context-param>
+</web-app>
