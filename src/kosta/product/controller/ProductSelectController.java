@@ -1,4 +1,4 @@
-package kosta.product.model.service;
+package kosta.product.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -9,21 +9,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.rowset.serial.SerialException;
 
-import kosta.model.dto.Electronics;
-import kosta.model.service.ElectronicsService;
+import kosta.bag.Controller;
+import kosta.bag.ModelAndView;
+import kosta.product.model.dto.ProductDTO;
+import kosta.product.model.service.ProductService;
 
-public class SelectController implements Controller{
+public class ProductSelectController implements Controller{
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("SelectController의 handleRequest호출");
-		String url = "errorView/error.jsp";
+		System.out.println("ProductSelectController의 handleRequest호출");
+		String url = "views/errorView/error.jsp";
 		try {
-			List<Electronics> list = ElectronicsService.selectAll();
+			List<ProductDTO> list = ProductService.selectAll();
 			request.setAttribute("list", list);
-			url="elecView/list.jsp";
+			url="views/product/list.jsp";
+			//url="index.jsp";
 		} catch (SQLException e) {
+			e.printStackTrace();
 			request.setAttribute("errorMsg", e.getMessage());
 		}
 		ModelAndView mv = new ModelAndView();
