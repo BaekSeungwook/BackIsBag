@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${path}/css/style.css">
-
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
 <style type="text/css">
 .data:hover {
 	background: #eee; cursor: pointer;
@@ -26,7 +27,6 @@ li{
 	list-style: none;
 }
 </style>
-
 <title>Insert title here</title>
 </head>
 
