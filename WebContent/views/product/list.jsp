@@ -6,145 +6,222 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="${path}/css/style.css">
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-<style type="text/css">
-.data:hover {
-	background: #eee; cursor: pointer;
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      
+<style>
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
 }
-.image{
-	height: 250px;
-	width: 100%;
+
+/* Add a gray background color and some padding to the footer */
+footer {
+	background-color: #f2f2f2;
+	padding: 25px;
 }
-.imagenone{
-	height: 250px;
-	width: 100%;
+
+.carousel{    width: 80%;
+    margin: 0 auto;}
+
+.carousel-inner img {
+	width: 100%; /* Set width to 100% */
+	margin: auto;
+	min-height: 200px;
 }
-li{
-	width: 25%;
-	float: left;
-	list-style: none;
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media ( max-width : 600px) {
+	.carousel-caption {
+		display: none;
+	}
 }
+
+/* .item>img{width: 1000px; height: 800px;margin: auto;}
+#myCarousel{width:1000px;height: 800px} */
+
+#proName{text-decoration: none;font-weight: bold; color: red;font-family:"Pacifico",sans-serif;}
+.data:hover {background: #f2d9d9; cursor: pointer;}
+ul li{width: 25%; float: left; list-style: none;}
+ol li{color: black;}
+img{height: 200px; width: 200px;border-radius: 48px;}
+strong{text-decoration: none;font-size: 40px;}
+h1{text-shadow:3px 4px 9px #424242;}
+h3{font-style: oblique; color: red!important}
+a{text-decoration: none!important;}
 </style>
+
+<script type="text/javascript">
+$(function(){
+	$("#searchBtn").click(function(){
+		if($("[name=keyField]").val() == "0"){
+			alert("검색필드를 선택해주세요.");
+			return;
+		}
+		
+		if($("[name=keyWord]").val()==""){
+			alert("검색단어가 없습니다.");
+			location.href ="product?command=productlist";
+			$("[name=keyWord]").focus();
+			return;
+		}
+		location.href ="product?command=productbysearch"
+				+"&keyField="+$("select[name=keyField]").val()
+				+"&keyWord="+$("input[name=keyWord]").val();
+	});
+});
+</script>
 <title>Insert title here</title>
 </head>
 
 <body>
 <%@ include file="../../top.jsp" %>
 <c:set var="path" value="${pageContext.request.contextPath}" scope="application"/>
-<table align="center" border="0" class="w3-main w3-content w3-padding" style="margin-top: 150px;">
-<%--<caption>상품 LIST</caption>
-  	<colgroup>
-		<col width="15%"/>
-		<col width="30%"/>
-		<col width="16%"/>
-		<col width="16%"/>
-		<col width="7%"/>
-		<col width="7%"/>
-		<col width="7%"/>
-	</colgroup>
-	<tr>
-        <th bgcolor="black">
-            <p align="center">
-            <font color="white"><b><span style="font-size:9pt;">상품이미지</span></b></font></p>
-        </th>
-        <th bgcolor="black">
-            <p align="center">
-            <font color="white"><b><span style="font-size:9pt;">상품코드</span></b></font></p>
-        </th>
-        <th bgcolor="black">
-            <p align="center"><font color="white"><b><span style="font-size:9pt;">상품이름</span></b></font></p>
-        </th>
-        <th bgcolor="black">
-            <p align="center"><font color="white"><b><span style="font-size:9pt;">상품설명</span></b></font></p>
-        </th>
-        <th bgcolor="black">
-            <p align="center"><font color="white"><b><span style="font-size:9pt;">등록일</span></b></font></p>
-        </th>
-        
-        <th bgcolor="black">
-            <p align="center"><font color="white"><b><span style="font-size:9pt;">가격</span></b></font></p>
-        </th>
-        <th bgcolor="black">
-            <p align="center"><font color="white"><b><span style="font-size:9pt;">브랜드</span></b></font></p>
-        </th>
-    </tr>
-    
-    <c:choose>
-    <c:when test="${empty requestScope.list}">
-	   <tr>
-        <td colspan="5">
-            <p align="center"><b><span style="font-size:9pt;">등록된 상품이 없습니다.</span></b></p>
-        </td>
-    </tr>
-    </c:when>
-    <c:otherwise>
-	<c:forEach items="${requestScope.list}" var="proDto">
-		    <tr onmouseover="this.style.background='#eaeaea'"
-		        onmouseout="this.style.background='white'">
-		        <td bgcolor="">
-		            <p align="center"><span style="font-size:9pt;">
-		            ${proDto.proCode}</span></p>
-		        </td>
-		        
-		        <td bgcolor="">
-	            <p align="center"><span style="font-size:9pt;">
-	            <img src="${path}/views/product/save/${proDto.fileName}" style="height: 150px; width: 200px;"></span></p>
-		        </td>
-		        
-		        <td bgcolor="">
-					<p><span style="font-size:9pt;">
-					<a href="product?command=productread&proCode=${proDto.proCode}">
-					  ${proDto.proName}
-					</a>
-					</span></p>
-		        </td>
-		        
-		        <td bgcolor="">
-		            <p align="center"><span style="font-size:9pt;">
-		            ${proDto.proDesc}</span></p>
-		        </td>
-		        <td bgcolor="">
-		            <p align="center"><span style="font-size:9pt;">
-		            ${proDto.proWriteDate}</span></p>
-		        </td>
-		         
-		         
-		        <td bgcolor="">
-		            <p align="center"><span style="font-size:9pt;">
-		            ${proDto.proBrand}</span></p>
-		        </td>
-		        
-	            <td bgcolor="">
-	            <p align="center"><span style="font-size:9pt;">
-	            ${proDto.proPrice}</span></p>
-		        </td>
-		    </tr>
-    </c:forEach>
-	</c:otherwise>
-    </c:choose> --%>
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top: 50px;">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+		</ol>
+
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<img src="${path}/views/product/listImage/큰가방1.png" alt="Image">
+				<div class="carousel-caption">
+					<h1 style="color: black; ">MoneyBag Brown</h1>
+					<h3 style="text-decoration: line-through">69,000원</h3>
+					<h1>49,000원</h1>
+				</div>
+			</div>
+
+			<div class="item">
+				<img src="${path}/views/product/listImage/큰가방2.png"
+					alt="Image">
+				<div class="carousel-caption">
+					<h1 style="color: black; ">RIPSTOP CORDURA Bag</h1>
+					<h3 style="text-decoration: line-through" ;>85,000원</h3>
+					<h1>67,000원</h1>
+				</div>
+			</div>
+			
+			<div class="item">
+				<img src="${path}/views/product/listImage/큰가방3.png"
+					alt="Image">
+				<div class="carousel-caption">
+					<h1 style="color: black; ">6 Pocket 3 Way Bag_Wax</h1>
+					<h3 style="text-decoration: line-through" ;>105,000원</h3>
+					<h1>7,7800원</h1>
+				</div>
+			</div>
+		</div>
+
+		<!-- Left and right controls -->
+		<a class="left carousel-control" href="#myCarousel" role="button"
+			data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
+			aria-hidden="true"></span> <span class="sr-only">Previous</span>
+		</a> <a class="right carousel-control" href="#myCarousel" role="button"
+			data-slide="next"> <span
+			class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+
+	<hr>
+	<div class="container text-center">
+		<span style="font-style: oblique;"><h1>Best Item</h1></span>
+		<br>
+		<div class="row">
+			<div class="col-sm-4">
+				<img src="${path}/views/product/listImage/아쿠르브 크로스백.jpg"
+					class="img-responsive" style="width: 100%" alt="Image">
+				<h3><b style="color: #333399">아쿠르브 크로스백 <span class="badge badge-danger">New!</span></b></h3>
+			</div>
+			<div class="col-sm-4">
+				<img src="${path}/views/product/listImage/아메카지BAAN brownbag.jpg"
+					class="img-responsive" style="width: 100%" alt="Image">
+				<h3><b style="color: #333399">아메카지BAAN brownbag</b></h3>
+			</div>
+			<div class="col-sm-4">
+				<img src="${path}/views/product/listImage/몬쓰 에코백.jpg"
+					class="img-responsive" style="width: 100%" alt="Image">
+				<h3><b style="color: #333399">몬쓰 에코백 <span class="badge badge-danger">New!</span></b></h3>
+			</div>
+			
+		</div>
+	</div>
+	<br>
+	<hr>
+<table align="center" border="0" class="w3-main w3-content w3-padding" >
+<div style="margin-right: 30px; margin-bottom: 10px">
+	<div align="right">
+		<button type="button" class="btn btn-info">
+			<a href="views/product/write.jsp" style="font-size: large; color: white">상품 등록</a>
+		</button>
+	</div>
+
+	<div align="right">
+	  <select name="keyField" style="height: 32px">
+	    <option value="0">--선택--</option>
+	    <option value="searchName">상품이름</option>
+	    <option value="searchBrand">상품브랜드</option>
+	  </select>
+	  <input type="text" name="keyWord" style="height: 32px">
+	  <button type="button" class="btn btn-default" id="searchBtn">
+	  <i class="glyphicon glyphicon-search"></i>
+	</button> 
+	</div>
+</div>
 
 <ul>
-<c:forEach items="${requestScope.list}" var="proDto">
-<li>
-     <div class="data" style="width: 200px;" align="center">
-       <div>
-       <img src="${path}/views/product/save/${proDto.fileName}" style="height: 200px; width: 200px;">
-       </div>
-       <div  style="font-weight: bold; color: red">&#9830; <a href="product?command=productread&proCode=${proDto.proCode}">
-	  ${proDto.proName}
-	</a> </div><br>
-       <div style="font-weight: bold">&#9830; ${proDto.proBrand}</div><br><br>
-       <div style="font-weight: bold">&#9830; ${proDto.proPrice}원</div><br>
-     </div>
-     </li>
-</c:forEach>	
+	<c:choose>
+	    <c:when test="${empty requestScope.list}">
+		  <tr>
+	        <td>
+	          <p align="center"><b><span style="font-size:12pt;">등록된 상품이 없습니다.</span></b></p>
+	        </td>
+	      </tr>	    
+	    </c:when>
+	  <c:otherwise>
+		
+		<c:forEach items="${requestScope.list}" var="proDto">
+		  <li><a href="product?command=productread&proCode=${proDto.proCode}">
+		     <div class="data" style="width: 220px;border-radius: 50px;" align="center">
+		       <div>
+		       <img src="${path}/views/product/save/${proDto.fileName}">
+		       </div>
+		       <h3>${proDto.proName}</h3><br>
+		       <div style="font-weight: bold">${proDto.proBrand}</div><br><br>
+		       <div style="font-weight: bold; color: black">${proDto.proPrice}원</div><br>
+		     </div></a>
+		   </li>
+		</c:forEach>
+	  </c:otherwise>
+	</c:choose>
 </ul>
-	
+
+                   
+ <ul class="pagination" style="text-align: right;">
+  <li class="page-item"><a class="page-link" href="#">1</a></li>
+  <li class="page-item"><a class="page-link" href="#">2</a></li>
+  <li class="page-item"><a class="page-link" href="#">3</a></li>
+  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+</ul>
+
 </table>
-<div align=right>
-<span style="font-size:9pt;">&lt;<a href="views/product/write.jsp">글쓰기</a>&gt;</span></div>
+
+
 
 </body>
 </html>

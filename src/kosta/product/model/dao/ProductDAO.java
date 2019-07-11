@@ -21,18 +21,11 @@ public interface ProductDAO {
 	public ProductDTO selectByCodenum(int proCode) throws SQLException;
 	
 	/**
-	 * 제품 브랜드 별 검색
+	 * 제품 브랜드, 상품이름 별 검색
 	 * select * from product where p_brand=?
 	 */
-	public ProductDTO selectByBrand(String proBrand) throws SQLException;
-	
-	/**
-	 * 제품 이름 검색
-	 * select * from product where p_name=?
-	 */
-	public ProductDTO selectByName(String proName) throws SQLException;
+	public List<ProductDTO> selectBySearch(String keyWord, String keyField) throws SQLException;
 		  
-	  
 	/**
 	 * 레코드 삽입
 	 * @return : 1-삽입성공 , 0 - 삽입실패
@@ -41,9 +34,9 @@ public interface ProductDAO {
 	int insert(ProductDTO productDTO) throws SQLException;
 	
 	/**
-	 * 상품코드에 해당하는 레코드 수정(모델이름, 가격, 내용만)
+	 * 상품코드에 해당하는 레코드 수정(모델이름, 설명, 브랜드, 가격, 파일이름)
 	 * @return : 1-수정성공 , 0 - 수정실패
-	 * update product set p_name=?, p_desc=?, p_brand=?, p_price=? where p_code=?
+	 * update product set p_name=?, p_desc=?, p_brand=?, p_price=?, filaName=? where p_code=?
 	 * */
 	int update(ProductDTO productDTO) throws SQLException;
 	  
@@ -53,6 +46,4 @@ public interface ProductDAO {
 	 * delete from product where p_code=?
 	 * */
 	int delete(int proCode) throws SQLException;
-	  
-	
 }

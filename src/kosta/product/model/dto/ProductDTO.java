@@ -31,6 +31,16 @@ public class ProductDTO {
 		this.proPrice = proPrice;
 		this.fileName = fileName;
 	}
+	
+	//update에 사용할 생성자
+	public ProductDTO(int proCode, String proName, String proDesc, String proBrand, int proPrice, String fileName) {
+		this.proCode = proCode;
+		this.proName = proName;
+		this.proDesc = proDesc;
+		this.proBrand = proBrand;
+		this.proPrice = proPrice;
+		this.fileName = fileName;
+	}
 
 	public int getProCode() {
 		return proCode;

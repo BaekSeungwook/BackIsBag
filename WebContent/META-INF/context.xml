@@ -31,7 +31,7 @@
     		  auth="Container"
               type="javax.sql.DataSource" 
               driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
-              username="scott" password="TIGER" maxTotal="20" maxIdle="10"
+              url="jdbc:oracle:thin:@34.97.135.31:1521:xe"
+              username="backisbag" password="backisbag" maxTotal="20" maxIdle="10"
               maxWaitMillis="-1"/>
 </Context>

@@ -21,7 +21,7 @@ public class ProductUpdateFormController implements Controller {
 		int proCode = Integer.parseInt(request.getParameter("proCode"));
 		try {
 			ProductDTO productDTO = ProductService.selectByCodenum(proCode);
-			request.setAttribute("proCode", proCode);
+			request.setAttribute("productDTO", productDTO);
 			url = "views/product/update.jsp";
 		} catch (SQLException e) {
 			request.setAttribute("errorMsg", e.getMessage());
@@ -30,5 +30,4 @@ public class ProductUpdateFormController implements Controller {
 		mv.setPath(url);
 		return mv;
 	}
-
 }
