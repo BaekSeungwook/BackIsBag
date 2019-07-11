@@ -36,8 +36,11 @@
 				$("[name=keyWord]").focus();
 				return;
 			}
-			$("[name=search]").submit(); //form 전송
-		})
+			/* $("[name=search]").submit(); //form 전송 */
+			location.href="member?command=selectBySearch"    //selectBySearch
+					+ "&keyField="+$("select[name=keyField]").val()
+					+ "&keyWord="+$("input[name=keyWord]").val();
+		});
 	})
 
 </script>
@@ -53,7 +56,7 @@
   <tr>
     <th colspan="10" style="text-align:right">
       <!-- <a href="memberForm.jsp">[ 회원가입 ]</a> -->&nbsp;&nbsp;&nbsp;
-      <a href="memberAll">[ 새로고침 ]</a>&nbsp;&nbsp;&nbsp;
+      <a href="member?command=select">[ 새로고침 ]</a>&nbsp;&nbsp;&nbsp;
     </th>
   </tr>
   <tr bgColor="green">
@@ -90,9 +93,9 @@
 <form name="search" action="selectBySearch" method="post">
  <select name="keyField">
    <option value="0">--선택--</option>
-   <option value="id">아이디</option>
-   <option value="name">이름</option>
-   <option value="addr">주소</option>
+   <option value="memberId">아이디</option>
+   <option value="memberName">이름</option>
+   <option value="memberAddr">주소</option>
  </select>
  
 <input type="text" name="keyWord"/>

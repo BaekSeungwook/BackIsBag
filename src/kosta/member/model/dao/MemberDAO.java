@@ -44,4 +44,14 @@ public interface MemberDAO {
 	 *	delete from m_table where m_id=? and m_pass=?
 	 */
 	int delete(String memberId, String memberPass) throws SQLException;
+	
+	/**
+	 *	회원정보 리스트에서 조건 검색
+	 *	select * from member where id like - 아이디
+	 *	select * from member where name like - 이름
+	 *	select * from member where addr like - 주소
+	 */
+	List<MemberDTO> selectBykeySearch(String keyField, String keyWord) throws SQLException;
+	
+	
 }

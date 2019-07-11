@@ -64,4 +64,9 @@ public class MemberService {
 		return result;
 		
 		}
+	public static List<MemberDTO> selectBySearch(String keyField, String keyWord) throws SQLException, IOException{
+		List<MemberDTO> list = memberDAO.selectBykeySearch(keyField, keyWord);
+		System.out.println("¼­ºñ½º : " + keyWord);
+		return list;
+	}
 }

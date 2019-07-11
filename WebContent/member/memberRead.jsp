@@ -8,8 +8,17 @@
 <c:set var="path" value="${pageContext.request.contextPath}" scope="application"/>
 <link rel="stylesheet" href="css/style.css">
 <style>
-   table{border:5px solid black}
-    tr,th,td{padding:5px; border: 1px solid yellow ; text-align: center }
+   /* table{border:5px solid black}
+    tr,th,td{padding:5px; border: 1px solid yellow ; text-align: center } */
+    .login-wrap{
+   width:100%;
+   margin:auto;
+   max-width:525px;
+   min-height:400px;
+   position:relative;
+   background:/*(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg)*/ no-repeat center;
+   box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
 </style>
 <script src="${path}/js/jquery-3.4.1.min.js"></script>
 <!-- <script src="..//js/jquery-3.4.1.min.js"></script> -->
@@ -42,7 +51,8 @@ $(function(){
 </head>
 <body>
 <%@ include file="../top.jsp" %>
-<table align="center" cellpadding="5" cellspacing="2" width="600" border='1'>
+<div class="login-wrap">
+<table align="center" cellpadding="5" cellspacing="2" width="500" border='1'>
     <tr>
         <td width="1220" height="20" colspan="4" bgcolor="black">
             <p align="center"><font color="white" size="3"><b>
@@ -145,6 +155,7 @@ $(function(){
       </td>
     </tr>
 </table>
+</div>
 <hr>
 <div align=right><span style="font-size:9pt;">&lt;<a href="${path}member?command=select">리스트로 돌아가기</a>&gt;</span></div>
 </body>

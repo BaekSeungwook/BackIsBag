@@ -139,4 +139,40 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return result;
 	}
+
+	@Override
+	public List<MemberDTO> selectBykeySearch(String keyField, String keyWord) {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		List<MemberDTO> list = new ArrayList<>();
+		String sql = "select * from m_table ";
+		try {
+			if(keyField.equals("memberId")) {
+				sql+="where m_id like ?";
+			} else if(keyField.equals("memberName")) {
+				sql+="where m_name like?";
+			} else if(keyField.equals("memberAddr")) {
+				sql+="where m_addr like?";
+			}
+			System.out.println("키워드 : " + keyWord);
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			// ?있으면 ?의 갯수만큼 setXxx()..
+			ps.setString(1,  "%" + keyWord.trim() + "%");
+			rs = ps.executeQuery(); //select문..
+			while(rs.next()) {
+				MemberDTO dto = new MemberDTO(rs.getString(1), rs.getString(2), 
+						rs.getString(3), rs.getString(4), 
+						rs.getString(5), rs.getString(6), 
+						rs.getString(7), rs.getString(8), rs.getInt(9));
+				list.add(dto);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		return list;
+	}
 }

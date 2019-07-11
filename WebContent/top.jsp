@@ -123,6 +123,7 @@ bold {
 				<div class="w3-center w3-padding-16"
 					style="background-color: black;">
 					<a href="index.jsp"><bold>BackIsBag</bold></a>
+					<h1>${sessionLogin.memberName} 님 로그인</h1>
 				</div>
 			</div>
 		</div>

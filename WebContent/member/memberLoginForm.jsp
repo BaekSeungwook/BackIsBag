@@ -6,8 +6,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script>
+if("${message}"!=""){
+    alert("${message}")
+}
+function login(th) {
+   if(th.memberId.value == "" || th.memberPass.value == "") {
+      alert("Please fill out all the information");
+      return false; //함수빠져나가라.
+   }
+}
+
 function check(th){//th는 form객체
-   if(th.memberId.value == "" || th.memberPass.value=="" || th.memberPass_Check.value=="" || th.memberName.value=="" ||
+   if(th.memberId.value == "" || th.memberPass.value == "" || th.memberPass_Check.value=="" || th.memberName.value=="" ||
       th.memberEmail.value=="" || th.memberCellphone.value=="" || th.memberAddr.value=="" ||
       th.memberAge.value==""){
       alert("Please fill out all the information");
@@ -180,6 +190,7 @@ a{color:inherit;text-decoration:none}
       <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label>
       <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Join</label>
       <div class="login-form">
+         <form method="post" action="../member?command=login" onsubmit="return login(this)"> 
          <div class="sign-in-htm">
             <div class="group">
                <label for="memberId" class="label">ID</label>
@@ -196,6 +207,7 @@ a{color:inherit;text-decoration:none}
                <input type="reset" class="button" value="cancle">
             </div>
          </div>
+         </form>
          <form method="post" action="../member?command=insert" onsubmit="return check(this)"> 
          <div class="sign-up-htm">
             <div class="group">

@@ -8,9 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
+import kosta.bag.Controller;
 import kosta.bag.ModelAndView;
 import kosta.member.model.dto.MemberDTO;
 import kosta.member.model.service.MemberService;
