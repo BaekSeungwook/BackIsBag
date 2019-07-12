@@ -29,7 +29,7 @@ public class LoginController implements Controller {
          
          if(memberPass.equals(login.getMemberPass())) {
         	HttpSession session = request.getSession();
-        	session.setAttribute("sessionLogin", login);            
+        	session.setAttribute("login", login);            
             mv.setPath("index.jsp");
             return mv;
          }else {
