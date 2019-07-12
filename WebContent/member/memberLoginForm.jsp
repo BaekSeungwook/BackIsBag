@@ -242,6 +242,7 @@ a{color:inherit;text-decoration:none}
                <label for="memberAge" class="label">Age</label>
                <input id="memberAge" type="text" name = "memberAge" class="input">
             </div>
+            
             <div class="group">
                <input type="submit" class="button" value="Sign Up">
             </div>
