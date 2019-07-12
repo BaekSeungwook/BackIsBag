@@ -133,7 +133,7 @@ a {
 	margin-top: 0px !important;
 	margin-bottom: inherit;
 }
-
+h3{font-style: oblique; color: red!important; font-weight: bolder!important;}
 .best-item {
 	font-family: "Permanent Marker", cursive;
 	font-weight: normal;
@@ -305,16 +305,15 @@ a {
 					<c:forEach items="${requestScope.list}" var="proDto">
 						<li><a
 							href="product?command=productread&proCode=${proDto.proCode}">
-								<div class="data" style="width: 220px; border-radius: 50px;"
-									align="center">
-									<div>
+								<div class="data" style="width: 220px;border-radius: 50px;" align="center">
+									<div style="font-style: oblique!important;">
 										<img src="${path}/views/product/save/${proDto.fileName}">
 									</div>
 									<h3>${proDto.proName}</h3>
 									<br>
 									<div style="font-weight: bold">${proDto.proBrand}</div>
 									<br> <br>
-									<div style="font-weight: bold; color: black">${proDto.proPrice}원</div>
+									<div style="font-weight: bold; color: black">&#8361 ${proDto.proPrice}</div>
 									<br>
 								</div>
 						</a></li>

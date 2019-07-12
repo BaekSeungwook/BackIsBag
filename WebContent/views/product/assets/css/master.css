@@ -1,0 +1,47 @@
+/*------------------------------------------------------------------
+[Master Stylesheet]
+
+Project:  Skyhunter
+Version:  1.0
+Assigned to:  WebNik
+Primary use:  Skyhunter
+-------------------------------------------------------------------*/
+
+
+/* FONTS*/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese');
+@import '../fonts/font-awesome-4.7/css/font-awesome.min.css';
+@import '../fonts/stroke/style.css';
+@import '../fonts/elegant/style.css';
+@import '../fonts/flaticon/flaticon.css';
+
+
+
+/* PLUGIN CSS */
+
+@import '../libs/bootstrap/bootstrap.css';                /* bootstrap */
+@import '../plugins/bootstrap-select/css/bootstrap-select.css';   /* select customization */
+@import '../plugins/headers/header.css';                /* header */
+@import '../plugins/headers/yamm.css';                /* header */
+@import '../plugins/slider-pro/slider-pro.css';         /* main slider */
+@import '../plugins/owl-carousel/owl.carousel.css';                 /* other sliders */
+@import '../plugins/magnific-popup/magnific-popup.css';            /* modal */
+@import '../plugins/animate/animate.css';                        /* animations */
+@import '../plugins/TiltHoverEffects/css/component.css';         /* animations */
+@import '../plugins/countdown/css/jquery.countdown.css';                        /* countdown */
+@import '../plugins/flowplayer/skin/playful.css';          /* video-player */
+
+
+
+/* MAIN CSS */
+
+@import 'theme.css';
+@import 'color.css';
+@import 'responsive.css';
+@import 'woocommerce-layout.css';
+@import 'woo.css';
+
+
+
+

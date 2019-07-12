@@ -29,7 +29,7 @@ function checkValid() {
 </SCRIPT>
 </HEAD>
 <BODY>
-<form name=updateForm method=post action="member" onSubmit="return checkValid()">
+<form name=updateForm method=post action="product?command=update&memberId=${dto.memberId}" onSubmit="return checkValid()">
     <input type="hidden" name="command" value="update" >
     <input type='hidden' name='memberId' value="${dto.memberId}">
 	<table align="center" cellpadding="5" cellspacing="1" width="600" border="1">
@@ -102,6 +102,6 @@ function checkValid() {
 
 </form>
 <hr>
-<div align=right><span style="font-size:9pt;">&lt;<a href="${path}member">리스트로 돌아가기</a>&gt;</span></div>
+<div align=right><span style="font-size:9pt;">&lt;<a href="${path}/product?command=select">리스트로 돌아가기</a>&gt;</span></div>
 </BODY>
 </HTML>

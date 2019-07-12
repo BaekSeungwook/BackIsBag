@@ -26,6 +26,11 @@ $(function(){
 			location.href="product?command=productdelete&proCode=${productDTO.proCode}";
 		}
 	});
+	$("#cartBtn").click(function(){
+		if(confirm("장바구니에 담으시겠습니까?")){
+			location.href="views/product/cart.jsp";
+		}
+	});
 })
 </script>
 </head>
@@ -90,7 +95,7 @@ $(function(){
 			<button type="button" class="btn btn-info" style="font-size: large;">
 				구매하기
 			</button>
-			<button type="button" class="btn btn-success" style="font-size: large;">
+			<button type="button" class="btn btn-success" id="cartBtn" style="font-size: large;">
 				장바구니
 			</button>
 		 </div>

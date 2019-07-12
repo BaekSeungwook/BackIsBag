@@ -52,7 +52,7 @@ $(function(){
 <body>
 <%@ include file="../top.jsp" %>
 <div class="login-wrap">
-<table align="center" cellpadding="5" cellspacing="2" width="500" border='1'>
+<table align="center" cellpadding="5" cellspacing="2" width="500" border='1' style="text-align: center; margin-top: 40px">
     <tr>
         <td width="1220" height="20" colspan="4" bgcolor="black">
             <p align="center"><font color="white" size="3"><b>
@@ -118,25 +118,10 @@ $(function(){
         </td>
     </tr>
     
-    <tr>
-        <td width="100" height="20">
-            <p align="right"><b><span style="font-size:9pt;">회원등급</span></b></p>
-        </td>
-        <td width="450" height="20" colspan="3">
-           <span style="font-size:9pt;"><b>${dto.memberGrade}</b></span>
-        </td>
-    </tr>
-     
-    <tr>
-    <td width="100" height="20">
-           <p align="right"><b><span style="font-size:9pt;">비밀번호</span></b></p>
-        </td>
+    
         
   <form name="requestForm" method="post" action="${path}/member">
-        <td height="20" colspan="3" align="left" valign="middle">
-            <input type=password name="memberPass" value="">      
-      </td>
-    </tr>
+    
     
     <tr>
         <td height="20" colspan="4" align="center" valign="middle">
@@ -145,11 +130,11 @@ $(function(){
             <input type=hidden name="command" value="delete">
              <!-- <input type=button value="수정하기" onClick="sendUpdate()"> 
              <input type=button value="삭제하기" onClick="sendDelete()"> --> 
-             <button><a href="member?command=updateForm&memberId=${dto.memberId }">수정하기</a>
+             <button><a href="product?command=updateForm&memberId=${dto.memberId }">수정하기</a>
              </button>
             <%-- <button id="deleteBtn" >
             <a href="member?command=delete&memberId=${dto.memberId }">삭제하기</a></button> --%>
-            <input type="submit" value="삭제하기">
+            <a href="product?command=delete"><input type="submit" value="삭제하기"></a>
     </form>
          
       </td>
@@ -157,6 +142,6 @@ $(function(){
 </table>
 </div>
 <hr>
-<div align=right><span style="font-size:9pt;">&lt;<a href="${path}member?command=select">리스트로 돌아가기</a>&gt;</span></div>
+<div align=right><span style="font-size:9pt;">&lt;<a href="${path}product?command=select">회원목록으로 돌아가기</a>&gt;</span></div>
 </body>
 </html>

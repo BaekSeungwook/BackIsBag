@@ -185,6 +185,7 @@ a{color:inherit;text-decoration:none}
 </style>
 </head>
 <body>
+<%@ include file="../top.jsp" %>
 <div class="login-wrap">
    <div class="login-html">
       <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label>
@@ -205,6 +206,9 @@ a{color:inherit;text-decoration:none}
             </div>
             <div class="group">
                <input type="reset" class="button" value="cancle">
+            </div>
+            <div align="right">
+               <a href="../index.jsp">Main</a>
             </div>
          </div>
          </form>

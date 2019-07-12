@@ -76,7 +76,7 @@
 	<c:forEach items="${list}" var="dto"  varStatus="state"> <!-- var 값은 직접 지정~ -->
 	<tr>
 		<td>${state.count }</td>
-		<td><a href="member?command=read&memberId=${dto.memberId }">${dto.memberId }</a></td>
+		<td><a href="product?command=read&memberId=${dto.memberId }">${dto.memberId }</a></td>
 		<td>${dto.memberName }</td>
 		<%-- <td>${dto.memberAge }</td> --%>
 		<%-- <td>${dto.memberEmail }</td> --%>

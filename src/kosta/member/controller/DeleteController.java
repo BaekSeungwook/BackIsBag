@@ -23,7 +23,7 @@ public class DeleteController implements Controller {
 		System.out.println("컨트롤러 테스트 : " + memberPass);
 		try {
 			MemberService.delete(memberId, memberPass);
-			url = "member";
+			url = "product?command=select";
 			mv.setRedirect(true);
 		}catch(SQLException e) {
 			request.setAttribute("errorMsg", e.getMessage());

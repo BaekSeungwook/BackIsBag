@@ -131,16 +131,24 @@ bold {
 
 		<c:choose>
 			<c:when test="${sessionLogin.memberId!=null}">
-				<a href=" " onclick="w3_close()" class="w3-bar-item w3-button">
-					logout </a>
+			
+			<c:choose>
+            <c:when test="${sessionLogin.memberId=='admin'}">
+               <a href="product?command=select" onclick="w3_close()" class="w3-bar-item w3-button">
+                  Memberlist
+               </a>
+	            </c:when>
+	         </c:choose>
+         
+				<a href="product?command=logout" onclick="w3_close()" class="w3-bar-item w3-button">
+					Logout </a>
 			</c:when>
 			<c:otherwise>
 				<a href="member/memberLoginForm.jsp" onclick="w3_close()"
-					class="w3-bar-item w3-button"> login 
+					class="w3-bar-item w3-button"> Login & Sign up
 			</c:otherwise>
 		</c:choose>
-		<a href="product" onclick="w3_close()" class="w3-bar-item w3-button">product</a>
-		<a href="member/memberLoginForm.jsp" onclick="w3_close()" class="w3-bar-item w3-button">sign up</a>
+		<a href="product" onclick="w3_close()" class="w3-bar-item w3-button">Product</a>
 	</nav>
 
 	<!-- Top menu -->
@@ -155,11 +163,12 @@ bold {
 
 					<c:choose>
 						<c:when test="${sessionLogin.memberId!=null}">
-							<span> welcome ${sessionLogin.memberName}! enjoy your shopping :)</span>
+							<span> welcome ${sessionLogin.memberName}! enjoy your shopping :)  
+							<a href="product?command=read&memberId=${sessionLogin.memberId}">〔마이페이지〕</a></span><br>
 							<br>
 						</c:when>
 						<c:otherwise>
-							<span>please <a href="member/memberLoginForm.jsp" style="text-decoration:none; color:white; font-weight:bold;">join</a> us</span>
+							<span>please <a href="member/memberLoginForm.jsp" style="text-decoration:none; color:white; font-weight:bold;">Login</a> us</span>
 						</c:otherwise>
 					</c:choose>
 
