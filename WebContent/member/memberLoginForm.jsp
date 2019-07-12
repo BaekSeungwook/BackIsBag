@@ -190,7 +190,7 @@ a{color:inherit;text-decoration:none}
       <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label>
       <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Join</label>
       <div class="login-form">
-         <form method="post" action="../member?command=login" onsubmit="return login(this)"> 
+         <form method="post" action="../product?command=login" onsubmit="return login(this)"> 
          <div class="sign-in-htm">
             <div class="group">
                <label for="memberId" class="label">ID</label>
@@ -208,7 +208,7 @@ a{color:inherit;text-decoration:none}
             </div>
          </div>
          </form>
-         <form method="post" action="../member?command=insert" onsubmit="return check(this)"> 
+         <form method="post" action="../product?command=insert" onsubmit="return check(this)"> 
          <div class="sign-up-htm">
             <div class="group">
                <label for="memberId" class="label">ID</label>

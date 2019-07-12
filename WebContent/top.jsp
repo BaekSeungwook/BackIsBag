@@ -107,9 +107,25 @@ bold {
 		id="mySidebar">
 		<!-- <a href="javascript:void(0)">a태그의 링크기능 무효화</a> -->
 		<a href="javascript:void(0)" onclick="w3_close()"
-			class="w3-bar-item w3-button">Close Menu</a> <a href="login.html"
-			onclick="w3_close()" class="w3-bar-item w3-button">login</a> <a
-			href="product" onclick="w3_close()" class="w3-bar-item w3-button">product</a>
+			class="w3-bar-item w3-button">Close Menu</a> 
+			
+		<c:choose>
+			   <c:when test="${sessionLogin.memberId!=null}">
+			   <a href=" " onclick="w3_close()" class="w3-bar-item w3-button">
+			     logout
+			    </a>
+			   </c:when>
+			   <c:otherwise>	
+				<a href="member/memberLoginForm.jsp" onclick="w3_close()" class="w3-bar-item w3-button">
+			   	 login
+			   	 
+			   </c:otherwise>
+			 </c:choose>
+			
+			
+			
+		 
+		<a href="product" onclick="w3_close()" class="w3-bar-item w3-button">product</a>
 		<a href="join.html" onclick="w3_close()" class="w3-bar-item w3-button">join</a>
 	</nav>
 
@@ -123,7 +139,14 @@ bold {
 				<div class="w3-center w3-padding-16"
 					style="background-color: black;">
 					<a href="index.jsp"><bold>BackIsBag</bold></a>
-					<h1>${sessionLogin.memberName} 님 로그인</h1>
+					<c:choose>
+					   <c:when test="${sessionLogin.memberId!=null}">
+					     ${sessionLogin.memberName}님 로그인중<br>
+					   </c:when>
+					   <c:otherwise>
+					   	 <h1>로그인해주세요</h1>
+					   </c:otherwise>
+					 </c:choose>
 				</div>
 			</div>
 		</div>
