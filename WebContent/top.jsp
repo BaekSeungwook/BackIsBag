@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -11,12 +11,12 @@
 <script src="js/jquery-3.4.1.min.js"></script>
 <!-- 폰트스타일 -->
 <link
-   href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap"
-   rel="stylesheet">
+	href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap"
+	rel="stylesheet">
 
 <link
-   href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
-   rel="stylesheet">
+	href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script
@@ -38,64 +38,83 @@
 
 <style>
 header {
-   font-family: "Permanent Marker", cursive;
-   vertical-align: text-bottom;
+	font-family: "Permanent Marker", cursive;
+	vertical-align: text-bottom;
 }
 
-
 .w3-bar-block .w3-bar-item {
-   padding: 16px 16px;
+	padding: 16px 16px;
 }
 
 #mySidebar {
-   background-color: black;
-   color: white !important;
-   min-width: 200px;
-   width: 20%;
-   display: none;
-   z-index: 2;
-   font-family: "Montserrat", sans-serif;
+	background-color: black;
+	color: white !important;
+	min-width: 200px;
+	width: 15%;
+	display: none;
+	z-index: 2;
+	font-family: "Montserrat", sans-serif;
 }
 
 #myTopbar {
-   background-color: black;
-   color: white;
-   background-size: cover;
-   background-position: bottom;
-   background-color: black;
-   text-shadow: 2px 3px 9px #424242;
-   position: relative;
+	background-color: black;
+	color: white;
+	background-size: cover;
+	background-position: bottom;
+	background-color: black;
+	text-shadow: 2px 3px 9px #424242;
+	position: relative;
+	height:100px;
 }
 
 .w3-bar-block .w3-bar-item {
-   text-decoration: none;
-   font-size: 20px;
+	text-decoration: none;
+	font-size: 20px;
 }
 
 #mySidebar>a:nth-child(1) {
-   margin-top: 100px;
+	margin-top: 100px;
 }
 
 .w3-white, .w3-hover-white:hover {
-   background-color: unset !important;
-   color: #fff !important;
+	background-color: unset !important;
+	color: #fff !important;
 }
 
 bold {
-   font-size: 60px;
-   font-family: "Permanent Marker", cursive;
-   font-weight: normal;
-   letter-spacing: 1px;
+	font-size: 60px;
+	font-family: "Permanent Marker", cursive;
+	font-weight: normal;
+	letter-spacing: 1px;
+	position: absolute;
+	display:contents;
 }
 
 #middle>div>a {
-   text-decoration: none !important;
-   color: white !important;
+	text-decoration: none !important;
+	color: white !important;
 }
 
 #myTopbar>div>div.w3-button.w3-padding-16.w3-left {
-   margin-top: 20px;
+	margin-top: 15px;
 }
+
+#middle>div>span {
+	display: inline-block;
+	font-family: "Montserrat", sans-serif;
+	float: right;
+	text-shadow: none;
+	font-size: 15px;
+	margin-top: 70px;
+}
+
+#middle > div{
+	padding-top:5px!important;
+	padding-bottom:0px!important;
+}
+
+
+
 </style>
 <title>BackIsBag : watch out your back</title>
 </head>
@@ -107,23 +126,21 @@ bold {
 		class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left"
 		id="mySidebar">
 		<!-- <a href="javascript:void(0)">a태그의 링크기능 무효화</a> -->
-		<a href="javascript:void(0)" onclick="w3_close()" 
-			class="w3-bar-item w3-button">Close Menu</a> 
-			
+		<a href="javascript:void(0)" onclick="w3_close()"
+			class="w3-bar-item w3-button">Close Menu</a>
+
 		<c:choose>
-		   <c:when test="${sessionLogin.memberId!=null}">
-		   <a href=" " onclick="w3_close()" class="w3-bar-item w3-button">
-		     logout
-		    </a>
-		   </c:when>
-		   <c:otherwise>	
-			<a href="member/memberLoginForm.jsp" onclick="w3_close()" class="w3-bar-item w3-button">
-		   	 login
-		   	 
-		   </c:otherwise>
-		 </c:choose>
-         <a href="product" onclick="w3_close()" class="w3-bar-item w3-button">product</a>
-         <a href="join.html" onclick="w3_close()" class="w3-bar-item w3-button">join</a>
+			<c:when test="${sessionLogin.memberId!=null}">
+				<a href=" " onclick="w3_close()" class="w3-bar-item w3-button">
+					logout </a>
+			</c:when>
+			<c:otherwise>
+				<a href="member/memberLoginForm.jsp" onclick="w3_close()"
+					class="w3-bar-item w3-button"> login 
+			</c:otherwise>
+		</c:choose>
+		<a href="product" onclick="w3_close()" class="w3-bar-item w3-button">product</a>
+		<a href="member/memberLoginForm.jsp" onclick="w3_close()" class="w3-bar-item w3-button">sign up</a>
 	</nav>
 
 	<!-- Top menu -->
@@ -133,22 +150,20 @@ bold {
 			<div class="w3-button w3-padding-16 w3-left" onclick="w3_open()"
 				style="font-family: monospace; background-color: black; color: white;">☰</div>
 			<div id="middle">
-				<div class="w3-center w3-padding-16"
-					style="background-color: black;">
+				<div class="w3-center w3-padding-16">
 					<a href="index.jsp"><bold>BackIsBag</bold></a>
-					
+
 					<c:choose>
-					   <c:when test="${sessionLogin.memberId!=null}">
-					     <span style="display: inline-block; font-family: 'Noto Sans KR', sans-serif; float: right; text-shadow: none; font-size: 15px; margin-top: 50px;">
-					     ${sessionLogin.memberName}님 로그인중</span><br>
-					   </c:when>
-					   <c:otherwise>
-					   <span style="display: inline-block; font-family: 'Noto Sans KR', sans-serif; float: right; text-shadow: none; font-size: 15px; margin-top: 50px;">
-					   	 <h1>로그인해주세요</h1></span>
-					   </c:otherwise>
-					 </c:choose>
-					 
-	
+						<c:when test="${sessionLogin.memberId!=null}">
+							<span> welcome ${sessionLogin.memberName}! enjoy your shopping :)</span>
+							<br>
+						</c:when>
+						<c:otherwise>
+							<span>please <a href="member/memberLoginForm.jsp" style="text-decoration:none; color:white; font-weight:bold;">join</a> us</span>
+						</c:otherwise>
+					</c:choose>
+
+
 				</div>
 			</div>
 		</div>
