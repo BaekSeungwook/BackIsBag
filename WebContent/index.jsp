@@ -65,7 +65,7 @@ img{
 			</div>
 			<div class="carousel-item">
 				<img src="w3images/main3.jpg" class="d-block w-100" alt="...">
-				<div class="carousel-caption d-none d-md-block">no worry. we got your back
+				<div class="carousel-caption d-none d-md-block">no worry. we got your back!
 				<br><a class="btn btn-dark btn-lg" href="product" role="button">shop now</a></div>
 			</div>
 			</div>
